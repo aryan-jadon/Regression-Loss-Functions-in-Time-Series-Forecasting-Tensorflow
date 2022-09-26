@@ -263,7 +263,7 @@ class FavoritaFormatter(data_formatters.base.GenericDataFormatter):
         model_params = {
             'dropout_rate': 0.1,
             'hidden_layer_size': 240,
-            'learning_rate': 0.001,
+            'learning_rate': 0.03,
             'minibatch_size': 128,
             'max_gradient_norm': 100.,
             'num_heads': 4,

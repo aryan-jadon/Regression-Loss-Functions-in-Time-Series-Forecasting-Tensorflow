@@ -32,7 +32,7 @@ import abc
 import enum
 
 
-# Type defintions
+# Type definitions
 class DataTypes(enum.IntEnum):
     """Defines numerical types of each column."""
     REAL_VALUED = 0
@@ -114,7 +114,7 @@ class GenericDataFormatter(abc.ABC):
     def num_classes_per_cat_input(self):
         """Returns number of categories per relevant input.
 
-    This is seqeuently required for keras embedding layers.
+    This is sequentially required for keras embedding layers.
     """
         return self._num_classes_per_cat_input
 
