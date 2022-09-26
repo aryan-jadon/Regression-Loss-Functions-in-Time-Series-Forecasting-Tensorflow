@@ -235,4 +235,4 @@ if __name__ == "__main__":
         model_folder=os.path.join(config.model_folder, "fixed"),
         data_csv_path=config.data_csv_path,
         data_formatter=formatter,
-        use_testing_mode=True)  # Change to false to use original default params
+        use_testing_mode=True)  # Change too false to use original default params
