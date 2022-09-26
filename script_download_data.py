@@ -425,7 +425,6 @@ def process_favorita(config):
     # Save manual download to root folder to avoid deleting when re-processing.
     zip_file = os.path.join('/Users/aryanjadon/Downloads/favorita-grocery-sales-forecasting.zip')
 
-    """
     if not os.path.exists(zip_file):
         raise ValueError(
             'Favorita zip file not found in {}!'.format(zip_file) +
@@ -440,7 +439,7 @@ def process_favorita(config):
         csv_file = file.replace('.7z', '')
 
         unzip(file, csv_file, data_folder)
-    """
+   
     print('Unzipping complete, commencing data processing...')
 
     # Extract only a subset of data to save/process for efficiency

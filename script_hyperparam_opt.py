@@ -16,7 +16,7 @@
 # Lint as: python3
 """Main hyperparameter optimisation script.
 
-Performs random search to optimize hyperparameters on a single machine. For new
+Performs random search to optimize hyper parameters on a single machine. For new
 datasets, inputs to the main(...) should be customised.
 """
 
@@ -50,7 +50,7 @@ def main(expt_name, use_gpu, restart_opt, model_folder, hyperparam_iterations,
     model_folder: Folder path where models are serialized
     hyperparam_iterations: Number of iterations of random search
     data_csv_path: Path to csv file containing data
-    data_formatter: Dataset-specific data fromatter (see
+    data_formatter: Dataset-specific data formatter (see
       expt_settings.dataformatter.GenericDataFormatter)
   """
 
