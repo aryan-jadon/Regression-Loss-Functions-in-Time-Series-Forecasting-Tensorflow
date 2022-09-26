@@ -26,24 +26,24 @@ from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoi
 
 # Generic.
 def get_single_col_by_input_type(input_type, column_definition):
-  """Returns name of single column.
+    """Returns name of single column.
 
   Args:
     input_type: Input type of column to extract
     column_definition: Column definition list for experiment
   """
 
-  l = [tup[0] for tup in column_definition if tup[2] == input_type]
+    l = [tup[0] for tup in column_definition if tup[2] == input_type]
 
-  if len(l) != 1:
-    raise ValueError('Invalid number of columns for {}'.format(input_type))
+    if len(l) != 1:
+        raise ValueError('Invalid number of columns for {}'.format(input_type))
 
-  return l[0]
+    return l[0]
 
 
 def extract_cols_from_data_type(data_type, column_definition,
                                 excluded_input_types):
-  """Extracts the names of columns that correspond to a define data_type.
+    """Extracts the names of columns that correspond to a define data_type.
 
   Args:
     data_type: DataType of columns to extract.
@@ -53,16 +53,16 @@ def extract_cols_from_data_type(data_type, column_definition,
   Returns:
     List of names for columns with data type specified.
   """
-  return [
-      tup[0]
-      for tup in column_definition
-      if tup[1] == data_type and tup[2] not in excluded_input_types
-  ]
+    return [
+        tup[0]
+        for tup in column_definition
+        if tup[1] == data_type and tup[2] not in excluded_input_types
+    ]
 
 
 # Loss functions.
 def tensorflow_quantile_loss(y, y_pred, quantile):
-  """Computes quantile loss for tensorflow.
+    """Computes quantile loss for tensorflow.
 
   Standard quantile loss as defined in the "Training Procedure" section of
   the main TFT paper
@@ -76,21 +76,21 @@ def tensorflow_quantile_loss(y, y_pred, quantile):
     Tensor for quantile loss.
   """
 
-  # Checks quantile
-  if quantile < 0 or quantile > 1:
-    raise ValueError(
-        'Illegal quantile value={}! Values should be between 0 and 1.'.format(
-            quantile))
+    # Checks quantile
+    if quantile < 0 or quantile > 1:
+        raise ValueError(
+            'Illegal quantile value={}! Values should be between 0 and 1.'.format(
+                quantile))
 
-  prediction_underflow = y - y_pred
-  q_loss = quantile * tf.maximum(prediction_underflow, 0.) + (
-      1. - quantile) * tf.maximum(-prediction_underflow, 0.)
+    prediction_underflow = y - y_pred
+    q_loss = quantile * tf.maximum(prediction_underflow, 0.) + (
+            1. - quantile) * tf.maximum(-prediction_underflow, 0.)
 
-  return tf.reduce_sum(input_tensor=q_loss, axis=-1)
+    return tf.reduce_sum(input_tensor=q_loss, axis=-1)
 
 
 def numpy_normalised_quantile_loss(y, y_pred, quantile):
-  """Computes normalised quantile loss for numpy arrays.
+    """Computes normalised quantile loss for numpy arrays.
 
   Uses the q-Risk metric as defined in the "Training Procedure" section of the
   main TFT paper.
@@ -103,30 +103,30 @@ def numpy_normalised_quantile_loss(y, y_pred, quantile):
   Returns:
     Float for normalised quantile loss.
   """
-  prediction_underflow = y - y_pred
-  weighted_errors = quantile * np.maximum(prediction_underflow, 0.) \
-      + (1. - quantile) * np.maximum(-prediction_underflow, 0.)
+    prediction_underflow = y - y_pred
+    weighted_errors = quantile * np.maximum(prediction_underflow, 0.) \
+                      + (1. - quantile) * np.maximum(-prediction_underflow, 0.)
 
-  quantile_loss = weighted_errors.mean()
-  normaliser = y.abs().mean()
+    quantile_loss = weighted_errors.mean()
+    normaliser = y.abs().mean()
 
-  return 2 * quantile_loss / normaliser
+    return 2 * quantile_loss / normaliser
 
 
 # OS related functions.
 def create_folder_if_not_exist(directory):
-  """Creates folder if it doesn't exist.
+    """Creates folder if it doesn't exist.
 
   Args:
     directory: Folder path to create.
   """
-  # Also creates directories recursively
-  pathlib.Path(directory).mkdir(parents=True, exist_ok=True)
+    # Also creates directories recursively
+    pathlib.Path(directory).mkdir(parents=True, exist_ok=True)
 
 
 # Tensorflow related functions.
 def get_default_tensorflow_config(tf_device='gpu', gpu_id=0):
-  """Creates tensorflow config for graphs to run on CPU or GPU.
+    """Creates tensorflow config for graphs to run on CPU or GPU.
 
   Specifies whether to run graph on gpu or cpu and which GPU ID to use for multi
   GPU machines.
@@ -139,25 +139,25 @@ def get_default_tensorflow_config(tf_device='gpu', gpu_id=0):
     Tensorflow config.
   """
 
-  if tf_device == 'cpu':
-    os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # for training on cpu
-    tf_config = tf.compat.v1.ConfigProto(
-        log_device_placement=False, device_count={'GPU': 0})
+    if tf_device == 'cpu':
+        os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # for training on cpu
+        tf_config = tf.compat.v1.ConfigProto(
+            log_device_placement=False, device_count={'GPU': 0})
 
-  else:
-    os.environ['CUDA_DEVICE_ORDER'] = 'PCI_BUS_ID'
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu_id)
+    else:
+        os.environ['CUDA_DEVICE_ORDER'] = 'PCI_BUS_ID'
+        os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu_id)
 
-    print('Selecting GPU ID={}'.format(gpu_id))
+        print('Selecting GPU ID={}'.format(gpu_id))
 
-    tf_config = tf.compat.v1.ConfigProto(log_device_placement=False)
-    tf_config.gpu_options.allow_growth = True
+        tf_config = tf.compat.v1.ConfigProto(log_device_placement=False)
+        tf_config.gpu_options.allow_growth = True
 
-  return tf_config
+    return tf_config
 
 
 def save(tf_session, model_folder, cp_name, scope=None):
-  """Saves Tensorflow graph to checkpoint.
+    """Saves Tensorflow graph to checkpoint.
 
   Saves all trainiable variables under a given variable scope to checkpoint.
 
@@ -167,20 +167,20 @@ def save(tf_session, model_folder, cp_name, scope=None):
     cp_name: Name of Tensorflow checkpoint
     scope: Variable scope containing variables to save
   """
-  # Save model
-  if scope is None:
-    saver = tf.compat.v1.train.Saver()
-  else:
-    var_list = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES, scope=scope)
-    saver = tf.compat.v1.train.Saver(var_list=var_list, max_to_keep=100000)
+    # Save model
+    if scope is None:
+        saver = tf.compat.v1.train.Saver()
+    else:
+        var_list = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES, scope=scope)
+        saver = tf.compat.v1.train.Saver(var_list=var_list, max_to_keep=100000)
 
-  save_path = saver.save(tf_session,
-                         os.path.join(model_folder, '{0}.ckpt'.format(cp_name)))
-  print('Model saved to: {0}'.format(save_path))
+    save_path = saver.save(tf_session,
+                           os.path.join(model_folder, '{0}.ckpt'.format(cp_name)))
+    print('Model saved to: {0}'.format(save_path))
 
 
 def load(tf_session, model_folder, cp_name, scope=None, verbose=False):
-  """Loads Tensorflow graph from checkpoint.
+    """Loads Tensorflow graph from checkpoint.
 
   Args:
     tf_session: Session to load graph into
@@ -189,36 +189,36 @@ def load(tf_session, model_folder, cp_name, scope=None, verbose=False):
     scope: Variable scope to use.
     verbose: Whether to print additional debugging information.
   """
-  # Load model proper
-  load_path = os.path.join(model_folder, '{0}.ckpt'.format(cp_name))
+    # Load model proper
+    load_path = os.path.join(model_folder, '{0}.ckpt'.format(cp_name))
 
-  print('Loading model from {0}'.format(load_path))
+    print('Loading model from {0}'.format(load_path))
 
-  print_weights_in_checkpoint(model_folder, cp_name)
+    print_weights_in_checkpoint(model_folder, cp_name)
 
-  initial_vars = set(
-      [v.name for v in tf.compat.v1.get_default_graph().as_graph_def().node])
+    initial_vars = set(
+        [v.name for v in tf.compat.v1.get_default_graph().as_graph_def().node])
 
-  # Saver
-  if scope is None:
-    saver = tf.compat.v1.train.Saver()
-  else:
-    var_list = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.GLOBAL_VARIABLES, scope=scope)
-    saver = tf.compat.v1.train.Saver(var_list=var_list, max_to_keep=100000)
-  # Load
-  saver.restore(tf_session, load_path)
-  all_vars = set([v.name for v in tf.compat.v1.get_default_graph().as_graph_def().node])
+    # Saver
+    if scope is None:
+        saver = tf.compat.v1.train.Saver()
+    else:
+        var_list = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.GLOBAL_VARIABLES, scope=scope)
+        saver = tf.compat.v1.train.Saver(var_list=var_list, max_to_keep=100000)
+    # Load
+    saver.restore(tf_session, load_path)
+    all_vars = set([v.name for v in tf.compat.v1.get_default_graph().as_graph_def().node])
 
-  if verbose:
-    print('Restored {0}'.format(','.join(initial_vars.difference(all_vars))))
-    print('Existing {0}'.format(','.join(all_vars.difference(initial_vars))))
-    print('All {0}'.format(','.join(all_vars)))
+    if verbose:
+        print('Restored {0}'.format(','.join(initial_vars.difference(all_vars))))
+        print('Existing {0}'.format(','.join(all_vars.difference(initial_vars))))
+        print('All {0}'.format(','.join(all_vars)))
 
-  print('Done.')
+    print('Done.')
 
 
 def print_weights_in_checkpoint(model_folder, cp_name):
-  """Prints all weights in Tensorflow checkpoint.
+    """Prints all weights in Tensorflow checkpoint.
 
   Args:
     model_folder: Folder containing checkpoint
@@ -227,10 +227,10 @@ def print_weights_in_checkpoint(model_folder, cp_name):
   Returns:
 
   """
-  load_path = os.path.join(model_folder, '{0}.ckpt'.format(cp_name))
+    load_path = os.path.join(model_folder, '{0}.ckpt'.format(cp_name))
 
-  print_tensors_in_checkpoint_file(
-      file_name=load_path,
-      tensor_name='',
-      all_tensors=True,
-      all_tensor_names=True)
+    print_tensors_in_checkpoint_file(
+        file_name=load_path,
+        tensor_name='',
+        all_tensors=True,
+        all_tensor_names=True)
