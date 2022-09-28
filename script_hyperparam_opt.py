@@ -23,7 +23,6 @@ datasets, inputs to the main(...) should be customised.
 import argparse
 import datetime as dte
 import os
-
 import data_formatters.base
 import expt_settings.configs
 import libs.hyperparam_opt
@@ -136,6 +135,8 @@ def main(expt_name, use_gpu, restart_opt, model_folder, hyperparam_iterations,
         print("Computing test loss")
         output_map = model.predict(test, return_targets=True)
         targets = data_formatter.format_predictions(output_map["targets"])
+
+        p10_forecast = data_formatter.format_predictions(output_map["p10"])
         p50_forecast = data_formatter.format_predictions(output_map["p50"])
         p90_forecast = data_formatter.format_predictions(output_map["p90"])
 
@@ -146,9 +147,14 @@ def main(expt_name, use_gpu, restart_opt, model_folder, hyperparam_iterations,
                 if col not in {"forecast_time", "identifier"}
             ]]
 
+        p10_loss = utils.numpy_normalised_quantile_loss(
+            extract_numerical_data(targets), extract_numerical_data(p10_forecast),
+            0.1)
+
         p50_loss = utils.numpy_normalised_quantile_loss(
             extract_numerical_data(targets), extract_numerical_data(p50_forecast),
             0.5)
+
         p90_loss = utils.numpy_normalised_quantile_loss(
             extract_numerical_data(targets), extract_numerical_data(p90_forecast),
             0.9)
@@ -161,9 +167,9 @@ def main(expt_name, use_gpu, restart_opt, model_folder, hyperparam_iterations,
 
     for k in best_params:
         print(k, " = ", best_params[k])
-    print()
-    print("Normalised Quantile Loss for Test Data: P50={}, P90={}".format(
-        p50_loss.mean(), p90_loss.mean()))
+    print("Normalised Quantile Loss for Test Data: P10={}, P50={}, P90={}".format(p10_loss.mean(),
+                                                                                  p50_loss.mean(),
+                                                                                  p90_loss.mean()))
 
 
 if __name__ == "__main__":
