@@ -23,6 +23,9 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
 
+from tensorflow import keras
+from tensorflow.keras import layers
+
 
 # Generic.
 def get_single_col_by_input_type(input_type, column_definition):
@@ -234,3 +237,74 @@ def print_weights_in_checkpoint(model_folder, cp_name):
         tensor_name='',
         all_tensors=True,
         all_tensor_names=True)
+
+
+from keras import backend
+
+
+class MeanBiasError(keras.losses.Loss):
+    def __init__(self, name="mean_bias_error"):
+        super().__init__(name=name)
+
+    def call(self, y_true, y_pred):
+        bias_error = tf.math.subtract(y_true, y_pred)
+        mbe_loss = backend.mean(backend.sum(bias_error) / backend.shape(y_true))
+        return mbe_loss
+
+
+class RelativeAbsoluteError(keras.losses.Loss):
+    def __init__(self, name="relative_absolute_error"):
+        super().__init__(name=name)
+
+    def call(self, y_true, y_pred):
+        true_mean = backend.mean(y_true)
+        squared_error_num = backend.sum(backend.abs(tf.math.subtract(y_true, y_pred)))
+        squared_error_den = backend.sum(backend.abs(tf.math.subtract(y_true, true_mean)))
+        rae_loss = tf.math.divide(squared_error_num, squared_error_den)
+        return rae_loss
+
+
+class RelativeSquaredError(keras.losses.Loss):
+    def __init__(self, name="relative_squared_error"):
+        super().__init__(name=name)
+
+    def call(self, y_true, y_pred):
+        squared_error_num = backend.sum(tf.math.square(tf.math.subtract(y_true, y_pred)))
+        squared_error_den = backend.sum(tf.math.square(tf.math.subtract(y_true, y_pred)))
+        rse_loss = tf.math.divide(squared_error_num, squared_error_den)
+        return rse_loss
+
+
+class RootMeanSquaredLogarithmicError(keras.losses.Loss):
+    def __init__(self, name="root_mean_squared_logarithmic_error "):
+        super().__init__(name=name)
+
+    def call(self, y_true, y_pred):
+        square_error = tf.math.square((tf.math.log(y_true + 1) - tf.math.log(y_pred + 1)))
+        mean_square_log_error = backend.mean(square_error)
+        rmsle_loss = tf.math.sqrt(mean_square_log_error)
+        return rmsle_loss
+
+
+class NormalizedRootMeanSquaredError(keras.losses.Loss):
+    def __init__(self, name="normalized_root_mean_squared_error"):
+        super().__init__(name=name)
+
+    def call(self, y_true, y_pred):
+        squared_error = tf.math.square(tf.math.subtract(y_true, y_pred))
+        sum_squared_error = backend.sum(squared_error)
+        rmse = tf.math.sqrt(tf.math.divide(sum_squared_error, y_true.size))
+        nrmse_loss = tf.math.divide(rmse, backend.std(y_pred))
+        return nrmse_loss
+
+
+class RelativeRootMeanSquaredError(keras.losses.Loss):
+    def __init__(self, name="relative_root_mean_squared_error "):
+        super().__init__(name=name)
+
+    def call(self, y_true, y_pred):
+        num = backend.sum(tf.math.square(tf.math.subtract(y_true, y_pred)))
+        den = backend.sum(tf.math.square(y_pred))
+        squared_error = tf.math.divide(num, den)
+        rrmse_loss = backend.sqrt(squared_error)
+        return rrmse_loss

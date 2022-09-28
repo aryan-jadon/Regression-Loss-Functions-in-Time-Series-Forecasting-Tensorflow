@@ -1088,10 +1088,12 @@ class TemporalFusionTransformer(object):
                                 b[Ellipsis, output_size * i:output_size * (i + 1)], quantile)
                     return loss
 
-            quantile_loss = QuantileLossCalculator(valid_quantiles).quantile_loss
-
             model.compile(
-                loss=quantile_loss,
+                loss=tf.keras.losses.Huber(
+                    delta=0.5,
+                    reduction=tf.keras.losses.Reduction.AUTO,
+                    name='huber_loss'
+                ),
                 optimizer=adam,
                 sample_weight_mode='temporal')
 

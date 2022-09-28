@@ -1088,10 +1088,8 @@ class TemporalFusionTransformer(object):
                                 b[Ellipsis, output_size * i:output_size * (i + 1)], quantile)
                     return loss
 
-            quantile_loss = QuantileLossCalculator(valid_quantiles).quantile_loss
-
             model.compile(
-                loss=quantile_loss,
+                loss=utils.RelativeAbsoluteError(),
                 optimizer=adam,
                 sample_weight_mode='temporal')
 
