@@ -11,8 +11,7 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - given-names: Aryan Jadon
-    family-names: Jadon
+  - family-names: Jadon
     name-particle: Aryan
     email: aryan.jadon@sjsu.edu
     orcid: 'https://orcid.org/0000-0002-2991-9913'
