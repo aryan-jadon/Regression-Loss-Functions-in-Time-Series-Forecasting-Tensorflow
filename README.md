@@ -1,4 +1,4 @@
-# Regression Loss Functions in Time Series Forecasting using Temporal Fusion Transformers
+# Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers
 ```
 This repository contains the implementation of paper Temporal Fusion Transformers for Interpretable 
 Multi-horizon Time Series Forecasting with different loss functions in Tensorflow. 
@@ -26,10 +26,11 @@ Paper Link: https://arxiv.org/pdf/1912.09363.pdf
 
 ## Summary of Experiment
 
-### Cite This Repository
+### Cite This Repository Work
 
 
-## How To Replicate This Experiment
+
+### How To Replicate This Experiment
 
 The key modules for experiments are organised as:
 
