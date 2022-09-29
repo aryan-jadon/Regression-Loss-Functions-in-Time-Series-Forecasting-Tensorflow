@@ -1,6 +1,7 @@
 /.ipynb_checkpoints/
-/electricity_dataset/
-/favorita_dataset/
-/traffic_dataset/
-/volatility_dataset/
 /notebooks/
+/volatility_dataset_experiments/volatility_dataset/
+/traffic_dataset_experiments/traffic_dataset/
+/experiments/
+/electricity_dataset_experiments/electricity_dataset/
+/favorita_dataset_experiments/favorita_dataset/

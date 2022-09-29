@@ -248,7 +248,8 @@ class MeanBiasError(keras.losses.Loss):
 
     def call(self, y_true, y_pred):
         bias_error = tf.math.subtract(y_true, y_pred)
-        mbe_loss = backend.mean(backend.sum(bias_error) / backend.shape(y_true))
+        size_value = tf.dtypes.cast(tf.size(y_true), tf.float32)
+        mbe_loss = backend.mean(backend.sum(bias_error) / size_value)
         return mbe_loss
 
 
@@ -275,17 +276,6 @@ class RelativeSquaredError(keras.losses.Loss):
         return rse_loss
 
 
-class RootMeanSquaredLogarithmicError(keras.losses.Loss):
-    def __init__(self, name="root_mean_squared_logarithmic_error "):
-        super().__init__(name=name)
-
-    def call(self, y_true, y_pred):
-        square_error = tf.math.square((tf.math.log(y_true + 1) - tf.math.log(y_pred + 1)))
-        mean_square_log_error = backend.mean(square_error)
-        rmsle_loss = tf.math.sqrt(mean_square_log_error)
-        return rmsle_loss
-
-
 class NormalizedRootMeanSquaredError(keras.losses.Loss):
     def __init__(self, name="normalized_root_mean_squared_error"):
         super().__init__(name=name)
@@ -293,7 +283,8 @@ class NormalizedRootMeanSquaredError(keras.losses.Loss):
     def call(self, y_true, y_pred):
         squared_error = tf.math.square(tf.math.subtract(y_true, y_pred))
         sum_squared_error = backend.sum(squared_error)
-        rmse = tf.math.sqrt(tf.math.divide(sum_squared_error, y_true.size))
+        size_value = tf.dtypes.cast(tf.size(y_true), tf.float32)
+        rmse = tf.math.sqrt(sum_squared_error / size_value)
         nrmse_loss = tf.math.divide(rmse, backend.std(y_pred))
         return nrmse_loss
 
@@ -308,3 +299,18 @@ class RelativeRootMeanSquaredError(keras.losses.Loss):
         squared_error = tf.math.divide(num, den)
         rrmse_loss = backend.sqrt(squared_error)
         return rrmse_loss
+
+
+class RootMeanSquaredLogarithmicError(keras.losses.Loss):
+    def __init__(self, name="root_mean_squared_logarithmic_error "):
+        super().__init__(name=name)
+
+    def call(self, y_true, y_pred):
+        y_pred = tf.convert_to_tensor(y_pred)
+        y_true = tf.cast(y_true, y_pred.dtype)
+        first_log = tf.math.log(backend.maximum(y_pred, backend.epsilon()) + 1.0)
+        second_log = tf.math.log(backend.maximum(y_true, backend.epsilon()) + 1.0)
+
+        return tf.math.sqrt(backend.mean(
+            tf.math.squared_difference(first_log, second_log), axis=-1
+        ))

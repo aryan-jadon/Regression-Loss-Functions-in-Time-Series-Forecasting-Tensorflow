@@ -1089,7 +1089,8 @@ class TemporalFusionTransformer(object):
                     return loss
 
             model.compile(
-                loss=tf.keras.metrics.RootMeanSquaredError(),
+                loss='mse',
+                metrics=[tf.keras.metrics.RootMeanSquaredError()],
                 optimizer=adam,
                 sample_weight_mode='temporal')
 
