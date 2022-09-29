@@ -84,7 +84,8 @@ python3 -m script_hyperparam_opt $EXPT $OUTPUT_FOLDER $USE_GPU yes
 ```
 where options are as above.
 
-### Running Default Experiement
+### Running Experiments with Loss Functions
+
 #### Move the Downloaded Dataset to their Respective Experiment Folder
 
 Run Experiment Script 
