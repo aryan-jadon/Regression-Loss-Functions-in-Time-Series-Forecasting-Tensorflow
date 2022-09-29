@@ -11,7 +11,7 @@ Authors: Bryan Lim, Sercan Arik, Nicolas Loeff and Tomas Pfister
 
 Paper Link: https://arxiv.org/pdf/1912.09363.pdf 
 
-> Multi-horizon forecasting problems often contain a complex mix of inputs -- including static (i.e. time-invariant) 
+> Abstract - Multi-horizon forecasting problems often contain a complex mix of inputs -- including static (i.e. time-invariant) 
 > covariates, known future inputs, and other exogenous time series that are only observed historically -- without any 
 > prior information on how they interact with the target. While several deep learning models have been proposed for 
 > multi-step prediction, they typically comprise black-box models which do not account for the full range of inputs 
@@ -36,6 +36,7 @@ title = {{Regression Loss Functions Performance Evaluation in Time Series Foreca
 
 ### How To Replicate This Experiment
 
+#### Downloading Data and Running Default Experiments
 The key modules for experiments are organised as:
 
 * **data\_formatters**: Stores the main dataset-specific column definitions, along with functions for data transformation and normalization. For compatibility with the TFT, new experiments should implement a unique ``GenericDataFormatter`` (see **base.py**), with examples for the default experiments shown in the other python files.
@@ -73,4 +74,10 @@ python3 -m script_hyperparam_opt $EXPT $OUTPUT_FOLDER $USE_GPU yes
 ```
 where options are as above.
 
+#### Move the Downloaded Dataset to their Respective Experiment Folder
 
+Run Experiment Script 
+
+```bash
+python3 running_experiments.py
+```
