@@ -37,5 +37,8 @@
   "LogCosh p90 Loss": "0.04626212874915689",
   "Huber Delta 0.5 p10 Loss": "0.03754627051463181",
   "Huber Delta 0.5 p50 Loss": "0.04053489932253964",
-  "Huber Delta 0.5 p90 Loss": "0.04121816078822414"
+  "Huber Delta 0.5 p90 Loss": "0.04121816078822414",
+  "Root Mean Squared Logarithmic Error p10 Loss": "0.040913331749046065",
+  "Root Mean Squared Logarithmic Error p50 Loss": "0.3326591104746543",
+  "Root Mean Squared Logarithmic Error p90 Loss": "0.5300992075211683"
 }
