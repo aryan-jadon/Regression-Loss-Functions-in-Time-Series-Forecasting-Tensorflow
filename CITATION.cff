@@ -2,18 +2,15 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: >-
-  Regression Loss Functions Performance Evaluation in
-  Time Series Forecasting using Temporal Fusion
-  Transformers
-message: >-
-  If you use this software, please cite it using the
-  metadata from this file.
-type: software
+message: "If you use this software, please cite it as below."
 authors:
-  - given-names: Aryan
-    family-names: Jadon
-    name-particle: Aryan
-    email: aryan.jadon@sjsu.edu
-    orcid: 'https://orcid.org/0000-0002-2991-9913'
-    affiliation: San Jose State University
+- family-names: "Jadon"
+  given-names: "Aryan"
+  email: aryan.jadon@sjsu.edu
+  orcid: 'https://orcid.org/0000-0002-2991-9913'
+  affiliation: San Jose State University
+title: "Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers"
+version: 0.1.1
+doi: 10.5281/zenodo.7126804
+date-released: 2022-09-29
+url: "https://doi.org/10.5281/zenodo.7126804"
