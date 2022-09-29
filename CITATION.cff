@@ -1,0 +1,19 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Regression Loss Functions Performance Evaluation in
+  Time Series Forecasting using Temporal Fusion
+  Transformers
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Aryan Jadon
+    family-names: Jadon
+    name-particle: Aryan
+    email: aryan.jadon@sjsu.edu
+    orcid: 'https://orcid.org/0000-0002-2991-9913'
+    affiliation: San Jose State University
