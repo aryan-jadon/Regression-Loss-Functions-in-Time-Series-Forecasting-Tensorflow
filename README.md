@@ -28,6 +28,8 @@ Paper Link: https://arxiv.org/pdf/1912.09363.pdf
 ## Experiments Summary
 
 ### Cite This Repository Work
+
+BibTex
 ```
 @software{jadon_aryan_2022_7126804,
   author       = {Jadon, Aryan},
@@ -36,13 +38,17 @@ Paper Link: https://arxiv.org/pdf/1912.09363.pdf
                    Transformers}},
   month        = sep,
   year         = 2022,
-  note         = {{If you use this software, please cite it using the 
-                   metadata from this file.}},
+  note         = {},
   publisher    = {Zenodo},
   version      = {0.1.1},
   doi          = {10.5281/zenodo.7126804},
   url          = {https://doi.org/10.5281/zenodo.7126804}
 }
+
+```
+APA - 
+```
+Jadon, A. (2022). Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers (Version 0.1.1) [Computer software]. https://doi.org/10.5281/zenodo.7126804
 ```
 
 ## How To Replicate This Experiment
