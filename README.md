@@ -24,7 +24,7 @@ Paper Link: https://arxiv.org/pdf/1912.09363.pdf
 > we demonstrate significant performance improvements over existing benchmarks, and showcase three practical 
 > interpretability use-cases of TFT.
 
-## Summary of Experiment
+## Experiments Summary
 
 ### Cite This Repository Work
 ```
@@ -34,9 +34,9 @@ title = {{Regression Loss Functions Performance Evaluation in Time Series Foreca
 }
 ```
 
-### How To Replicate This Experiment
+## How To Replicate This Experiment
 
-#### Downloading Data and Running Default Experiments
+### Downloading Data and Running Default Experiments
 The key modules for experiments are organised as:
 
 * **data\_formatters**: Stores the main dataset-specific column definitions, along with functions for data transformation and normalization. For compatibility with the TFT, new experiments should implement a unique ``GenericDataFormatter`` (see **base.py**), with examples for the default experiments shown in the other python files.
@@ -50,7 +50,6 @@ Scripts are all saved in the main folder, with descriptions below:
 * **script\_train\_fixed\_params.py**: Calibrates the TFT using a predefined set of hyperparameters, and evaluates for a given experiment.
 * **script\_hyperparameter\_optimisation.py**: Runs full hyperparameter optimization using the default random search ranges defined for the TFT.
 
-## Running Default Experiements
 Our four default experiments are divided into ``volatility``, ``electricity``, ``traffic``, and``favorita``. 
 To run these experiments, first download the data, and then run the relevant training routine.
 
@@ -74,6 +73,7 @@ python3 -m script_hyperparam_opt $EXPT $OUTPUT_FOLDER $USE_GPU yes
 ```
 where options are as above.
 
+### Running Default Experiement
 #### Move the Downloaded Dataset to their Respective Experiment Folder
 
 Run Experiment Script 
