@@ -27,8 +27,12 @@ Paper Link: https://arxiv.org/pdf/1912.09363.pdf
 ## Summary of Experiment
 
 ### Cite This Repository Work
-
-
+```
+@software{Aryan_Jadon_Regression_Loss_Functions,
+author = {Aryan Jadon, Aryan},
+title = {{Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers}}
+}
+```
 
 ### How To Replicate This Experiment
 
@@ -46,7 +50,8 @@ Scripts are all saved in the main folder, with descriptions below:
 * **script\_hyperparameter\_optimisation.py**: Runs full hyperparameter optimization using the default random search ranges defined for the TFT.
 
 ## Running Default Experiements
-Our four default experiments are divided into ``volatility``, ``electricity``, ``traffic``, and``favorita``. To run these experiments, first download the data, and then run the relevant training routine.
+Our four default experiments are divided into ``volatility``, ``electricity``, ``traffic``, and``favorita``. 
+To run these experiments, first download the data, and then run the relevant training routine.
 
 ### Step 1: Download data for default experiments
 To download the experiment data, run the following script:
