@@ -44,9 +44,9 @@ BibTex
   doi          = {10.5281/zenodo.7126804},
   url          = {https://doi.org/10.5281/zenodo.7126804}
 }
-
 ```
-APA - 
+
+APA
 ```
 Jadon, A. (2022). Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers (Version 0.1.1) [Computer software]. https://doi.org/10.5281/zenodo.7126804
 ```
