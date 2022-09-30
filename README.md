@@ -38,7 +38,7 @@ BibTex
                    Transformers}},
   month        = sep,
   year         = 2022,
-  note         = {},
+  note         = {{https://github.com/aryan-jadon/Regression-Loss-Functions-in-Time-Series-Forecasting-Tensorflow}},
   publisher    = {Zenodo},
   version      = {0.1.1},
   doi          = {10.5281/zenodo.7126804},
