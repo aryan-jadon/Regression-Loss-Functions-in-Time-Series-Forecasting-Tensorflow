@@ -1,5 +1,7 @@
 # Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers
+
 [![DOI](https://zenodo.org/badge/539248750.svg)](https://zenodo.org/badge/latestdoi/539248750)
+
 ```
 This repository contains the implementation of paper Temporal Fusion Transformers for Interpretable 
 Multi-horizon Time Series Forecasting with different loss functions in Tensorflow. 
@@ -24,6 +26,8 @@ Paper Link: https://arxiv.org/pdf/1912.09363.pdf
 > to suppress unnecessary components, enabling high performance in a wide range of regimes. On a variety of real-world datasets, 
 > we demonstrate significant performance improvements over existing benchmarks, and showcase three practical 
 > interpretability use-cases of TFT.
+
+Majority of this repository work is taken from - https://github.com/google-research/google-research/tree/master/tft.
 
 ## Experiments Summary
 
@@ -51,9 +55,10 @@ APA
 Jadon, A. (2022). Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers (Version 0.1.1) [Computer software]. https://doi.org/10.5281/zenodo.7126804
 ```
 
-## How To Replicate This Experiment
+### How To Replicate This Experiment
 
-### Downloading Data and Running Default Experiments
+#### Downloading Data and Running Default Experiments
+
 The key modules for experiments are organised as:
 
 * **data\_formatters**: Stores the main dataset-specific column definitions, along with functions for data transformation and normalization. For compatibility with the TFT, new experiments should implement a unique ``GenericDataFormatter`` (see **base.py**), with examples for the default experiments shown in the other python files.
@@ -70,24 +75,31 @@ Scripts are all saved in the main folder, with descriptions below:
 Our four default experiments are divided into ``volatility``, ``electricity``, ``traffic``, and``favorita``. 
 To run these experiments, first download the data, and then run the relevant training routine.
 
-### Step 1: Download data for default experiments
+#### Step 1: Download data for default experiments
 To download the experiment data, run the following script:
+
 ```bash
 python3 -m script_download_data $EXPT $OUTPUT_FOLDER
 ```
+
 where ``$EXPT`` can be any of {``volatility``, ``electricity``, ``traffic``, ``favorita``}, and ``$OUTPUT_FOLDER`` denotes the root folder in which experiment outputs are saved.
 
-### Step 2: Train and evaluate network
+#### Step 2: Train and evaluate network
 To train the network with the optimal default parameters, run:
+
 ```bash
 python3 -m script_train_fixed_params $EXPT $OUTPUT_FOLDER $USE_GPU 
 ```
+
 where ``$EXPT`` and ``$OUTPUT_FOLDER`` are as above, ``$GPU`` denotes whether to run with GPU support (options are {``'yes'`` or``'no'``}).
 
+
 For full hyperparameter optimization, run:
+
 ```bash
 python3 -m script_hyperparam_opt $EXPT $OUTPUT_FOLDER $USE_GPU yes
 ```
+
 where options are as above.
 
 ### Running Experiments with Loss Functions
