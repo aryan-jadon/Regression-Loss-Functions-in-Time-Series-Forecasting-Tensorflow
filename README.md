@@ -57,7 +57,7 @@ Jadon, A. (2022). Regression Loss Functions Performance Evaluation in Time Serie
 
 ![Summary of Loss Functions](https://github.com/aryan-jadon/Regression-Loss-Functions-in-Time-Series-Forecasting-Tensorflow/blob/main/loss_functions_plots/Loss-Functions-Summary.png)
 
-### How To Replicate This Experiment
+### How To Replicate Experiments
 
 #### Downloading Data and Running Default Experiments
 
