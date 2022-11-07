@@ -55,6 +55,8 @@ APA
 Jadon, A. (2022). Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers (Version 0.1.1) [Computer software]. https://doi.org/10.5281/zenodo.7126804
 ```
 
+![Summary of Loss Functions](https://github.com/aryan-jadon/Regression-Loss-Functions-in-Time-Series-Forecasting-Tensorflow/blob/main/loss_functions_plots/Loss-Functions-Summary.png)
+
 ### How To Replicate This Experiment
 
 #### Downloading Data and Running Default Experiments
