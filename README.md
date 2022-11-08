@@ -31,9 +31,22 @@ Majority of this repository work is taken from - https://github.com/google-resea
 
 ## Experiments Summary
 
+### Cite Our Paper
+
+```
+@misc{jadon2022comprehensive,
+      title={A Comprehensive Survey of Regression Based Loss Functions for Time Series Forecasting}, 
+      author={Aryan Jadon and Avinash Patil and Shruti Jadon},
+      year={2022},
+      eprint={2211.02989},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
+
 ### Cite This Repository Work
 
-BibTex
+BibTex Format
 ```
 @software{jadon_aryan_2022_7126804,
   author       = {Jadon, Aryan},
@@ -50,7 +63,7 @@ BibTex
 }
 ```
 
-APA
+APA Format
 ```
 Jadon, A. (2022). Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers (Version 0.1.1) [Computer software]. https://doi.org/10.5281/zenodo.7126804
 ```
