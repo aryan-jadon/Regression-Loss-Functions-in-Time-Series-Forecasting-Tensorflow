@@ -46,30 +46,6 @@ Majority of this repository work is taken from - https://github.com/google-resea
 
 Paper Link - https://arxiv.org/abs/2211.02989
 
-### Cite This Repository Work
-
-BibTex Format
-```
-@software{jadon_aryan_2022_7126804,
-  author       = {Jadon, Aryan},
-  title        = {{Regression Loss Functions Performance Evaluation 
-                   in Time Series Forecasting using Temporal Fusion
-                   Transformers}},
-  month        = sep,
-  year         = 2022,
-  note         = {{https://github.com/aryan-jadon/Regression-Loss-Functions-in-Time-Series-Forecasting-Tensorflow}},
-  publisher    = {Zenodo},
-  version      = {0.1.1},
-  doi          = {10.5281/zenodo.7126804},
-  url          = {https://doi.org/10.5281/zenodo.7126804}
-}
-```
-
-APA Format
-```
-Jadon, A. (2022). Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers (Version 0.1.1) [Computer software]. https://doi.org/10.5281/zenodo.7126804
-```
-
 ![Summary of Loss Functions](https://github.com/aryan-jadon/Regression-Loss-Functions-in-Time-Series-Forecasting-Tensorflow/blob/main/loss_functions_plots/Loss-Functions-Summary.png)
 
 ### How To Replicate Experiments
