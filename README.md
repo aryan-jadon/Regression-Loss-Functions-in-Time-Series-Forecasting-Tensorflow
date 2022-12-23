@@ -44,7 +44,7 @@ Majority of this repository work is taken from - https://github.com/google-resea
 }
 ```
 
-Paper Link - https://arxiv.org/abs/2211.02989
+#### Paper Link - https://arxiv.org/abs/2211.02989
 
 ![Summary of Loss Functions](https://github.com/aryan-jadon/Regression-Loss-Functions-in-Time-Series-Forecasting-Tensorflow/blob/main/loss_functions_plots/Loss-Functions-Summary.png)
 
