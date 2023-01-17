@@ -1,5 +1,7 @@
 # Regression Loss Functions Performance Evaluation in Time Series Forecasting using Temporal Fusion Transformers
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7542550.svg)](https://doi.org/10.5281/zenodo.7542550)
+
 ```
 This repository contains the implementation of paper Temporal Fusion Transformers for Interpretable 
 Multi-horizon Time Series Forecasting with different loss functions in Tensorflow. 
